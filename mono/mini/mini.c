@@ -5323,6 +5323,21 @@ mini_init (const char *filename, const char *runtime_version)
 
 	MONO_PROBE_VES_INIT_BEGIN ();
 
+#ifdef RIMWORLD
+   {
+      char *options_debug = getenv("RIMWORLD_MOD_DEBUG");
+      if (options_debug)
+      {
+         const char* options[] =
+         {
+            options_debug
+         };
+         mono_jit_parse_options(sizeof(options) / sizeof(char*), (char**)options);
+         mono_debug_init(MONO_DEBUG_FORMAT_MONO);
+      }
+   }
+#endif
+
 #ifdef __linux__
 	if (access ("/proc/self/maps", F_OK) != 0) {
 		g_print ("Mono requires /proc to be mounted.\n");

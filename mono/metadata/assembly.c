@@ -1452,19 +1452,66 @@ mono_assembly_open (const char *filename, MonoImageOpenStatus *status)
 	return mono_assembly_open_full (filename, status, FALSE);
 }
 
+//RIMWORLD
+static gchar *
+find_file_in_dir(const gchar *path, const gchar *fileName)
+{
+   GDir *dir = g_dir_open(path, 0, NULL);
+   const gchar * files;
+   while ((files = g_dir_read_name(dir)) != NULL)
+   {
+      gchar *file = g_build_filename(path, files, NULL);
+      if (g_file_test(file, G_FILE_TEST_IS_DIR))
+      {
+         gchar* ret = find_file_in_dir(file, fileName);
+         if (ret)
+         {
+            g_free(file);
+            return ret;
+         }
+         continue;
+      }
+      if (!strcmp(files, fileName))
+      {
+         return file;
+      }
+   }
+   g_dir_close(dir);
+   return NULL;
+
+}
+
 MonoAssembly *
 mono_assembly_load_from_full (MonoImage *image, const char*fname, 
 			      MonoImageOpenStatus *status, gboolean refonly)
 {
 	MonoAssembly *ass, *ass2;
 	char *base_dir;
+   char *search_fname;
 
 	if (!image->tables [MONO_TABLE_ASSEMBLY].rows) {
 		/* 'image' doesn't have a manifest -- maybe someone is trying to Assembly.Load a .netmodule */
 		*status = MONO_IMAGE_IMAGE_INVALID;
 		return NULL;
 	}
-
+#ifdef RIMWORLD
+   if (*fname == '\0')
+   {
+      gchar *cwd = g_get_current_dir();
+      gchar* mod_dir = g_build_path(G_DIR_SEPARATOR_S, cwd, "Mods", NULL);
+      search_fname = find_file_in_dir(mod_dir, image->module_name);
+      if (search_fname)
+      {
+         int iSize = strlen(search_fname) + 1;
+         image->name = mono_mempool_alloc(image->mempool, iSize);
+         strcpy(image->name, search_fname);
+         fname = search_fname;
+      }
+      g_free(cwd);
+      g_free(mod_dir);
+   }
+#endif
+ 
 #if defined (PLATFORM_WIN32)
 	{
 		gchar *tmp_fn;

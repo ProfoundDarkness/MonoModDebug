@@ -17,6 +17,14 @@
       <Configuration>Debug</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseNoOp_eglib|Win32">
+      <Configuration>ReleaseNoOp_eglib</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseNoOp_eglib|x64">
+      <Configuration>ReleaseNoOp_eglib</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Release_eglib_xarm|Win32">
       <Configuration>Release_eglib_xarm</Configuration>
       <Platform>Win32</Platform>
@@ -56,6 +64,10 @@
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseNoOp_eglib|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_eglib|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
@@ -73,6 +85,10 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_eglib|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseNoOp_eglib|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -97,6 +113,9 @@
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_eglib|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseNoOp_eglib|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_eglib|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
@@ -110,6 +129,9 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_eglib|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseNoOp_eglib|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_eglib|x64'" Label="PropertySheets">
@@ -137,9 +159,13 @@
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug_eglib|x64'">$(Platform)_$(Configuration)/lib\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug_eglib|x64'">$(Platform)_$(Configuration)/obj/$(ProjectName)\</IntDir>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release_eglib|Win32'">$(Platform)_$(Configuration)/lib\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='ReleaseNoOp_eglib|Win32'">$(Platform)_$(Configuration)/lib\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release_eglib|Win32'">$(Platform)_$(Configuration)/obj/$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='ReleaseNoOp_eglib|Win32'">$(Platform)_$(Configuration)/obj/$(ProjectName)\</IntDir>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release_eglib|x64'">$(Platform)_$(Configuration)/lib\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='ReleaseNoOp_eglib|x64'">$(Platform)_$(Configuration)/lib\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release_eglib|x64'">$(Platform)_$(Configuration)/obj/$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='ReleaseNoOp_eglib|x64'">$(Platform)_$(Configuration)/obj/$(ProjectName)\</IntDir>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release_eglib_xarm|Win32'">$(Platform)-$(Configuration)\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release_eglib_xarm|Win32'">$(Platform)-$(Configuration)\obj\$(ProjectName)\</IntDir>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release_eglib_xarm|x64'">$(Platform)\$(Configuration)\</OutDir>
@@ -272,7 +298,24 @@
     <ClCompile>
       <Optimization>MinSpace</Optimization>
       <AdditionalIncludeDirectories>..\libgc\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NDEBUG;__i386__;TARGET_X86;i386;WIN32;_WIN32;__WIN32__;_WINDOWS;WINDOWS;PLATFORM_WIN32;TARGET_WIN32;_CRT_SECURE_NO_DEPRECATE;__STDC__;PACKAGE_NAME="libgc-mono";PACKAGE_TARNAME="libgc-mono";PACKAGE_VERSION="6.6";PACKAGE_STRING="libgc-mono 6.6";PACKAGE_BUGREPORT="Hans_Boehm%40hp.com";GC_WIN32_THREADS=1;NO_GETENV=1;GC_INSIDE_DLL=1;GC_NOT_DLL=1;STDC_HEADERS=1;HAVE_SYS_TYPES_H=1;HAVE_SYS_STAT_H=1;HAVE_STDLIB_H=1;HAVE_STRING_H=1;HAVE_MEMORY_H=1;HAVE_STRINGS_H=1;HAVE_INTTYPES_H=1;HAVE_STDINT_H=1;HAVE_UNISTD_H=1;SILENT=1;NO_SIGNALS=1;NO_EXECUTE_PERMISSION=1;JAVA_FINALIZATION=1;GC_GCJ_SUPPORT=1;ATOMIC_UNCOLLECTABLE=1;_IN_LIBGC=1;WINVER=0x0500;_WIN32_WINNT=0x0500;_WIN32_IE=0x0501;WIN32_THREADS;FD_SETSIZE=1024;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>RIMWORLD;NDEBUG;__i386__;TARGET_X86;i386;WIN32;_WIN32;__WIN32__;_WINDOWS;WINDOWS;PLATFORM_WIN32;TARGET_WIN32;_CRT_SECURE_NO_DEPRECATE;__STDC__;PACKAGE_NAME="libgc-mono";PACKAGE_TARNAME="libgc-mono";PACKAGE_VERSION="6.6";PACKAGE_STRING="libgc-mono 6.6";PACKAGE_BUGREPORT="Hans_Boehm%40hp.com";GC_WIN32_THREADS=1;NO_GETENV=1;GC_INSIDE_DLL=1;GC_NOT_DLL=1;STDC_HEADERS=1;HAVE_SYS_TYPES_H=1;HAVE_SYS_STAT_H=1;HAVE_STDLIB_H=1;HAVE_STRING_H=1;HAVE_MEMORY_H=1;HAVE_STRINGS_H=1;HAVE_INTTYPES_H=1;HAVE_STDINT_H=1;HAVE_UNISTD_H=1;SILENT=1;NO_SIGNALS=1;NO_EXECUTE_PERMISSION=1;JAVA_FINALIZATION=1;GC_GCJ_SUPPORT=1;ATOMIC_UNCOLLECTABLE=1;_IN_LIBGC=1;WINVER=0x0500;_WIN32_WINNT=0x0500;_WIN32_IE=0x0501;WIN32_THREADS;FD_SETSIZE=1024;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <ProgramDataBaseFileName>$(OutDir)vc80.pdb</ProgramDataBaseFileName>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)libgc.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseNoOp_eglib|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\libgc\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>RIMWORLD;NDEBUG;__i386__;TARGET_X86;i386;WIN32;_WIN32;__WIN32__;_WINDOWS;WINDOWS;PLATFORM_WIN32;TARGET_WIN32;_CRT_SECURE_NO_DEPRECATE;__STDC__;PACKAGE_NAME="libgc-mono";PACKAGE_TARNAME="libgc-mono";PACKAGE_VERSION="6.6";PACKAGE_STRING="libgc-mono 6.6";PACKAGE_BUGREPORT="Hans_Boehm%40hp.com";GC_WIN32_THREADS=1;NO_GETENV=1;GC_INSIDE_DLL=1;GC_NOT_DLL=1;STDC_HEADERS=1;HAVE_SYS_TYPES_H=1;HAVE_SYS_STAT_H=1;HAVE_STDLIB_H=1;HAVE_STRING_H=1;HAVE_MEMORY_H=1;HAVE_STRINGS_H=1;HAVE_INTTYPES_H=1;HAVE_STDINT_H=1;HAVE_UNISTD_H=1;SILENT=1;NO_SIGNALS=1;NO_EXECUTE_PERMISSION=1;JAVA_FINALIZATION=1;GC_GCJ_SUPPORT=1;ATOMIC_UNCOLLECTABLE=1;_IN_LIBGC=1;WINVER=0x0500;_WIN32_WINNT=0x0500;_WIN32_IE=0x0501;WIN32_THREADS;FD_SETSIZE=1024;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <BufferSecurityCheck>true</BufferSecurityCheck>
       <PrecompiledHeader>
@@ -292,7 +335,27 @@
     <ClCompile>
       <Optimization>MinSpace</Optimization>
       <AdditionalIncludeDirectories>..\libgc\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NDEBUG;__x86_64__;TARGET_AMD64;WIN64;_WIN64;WIN32;_WIN32;__WIN32__;_WINDOWS;WINDOWS;PLATFORM_WIN32;TARGET_WIN32;_CRT_SECURE_NO_DEPRECATE;__STDC__;PACKAGE_NAME="libgc-mono";PACKAGE_TARNAME="libgc-mono";PACKAGE_VERSION="6.6";PACKAGE_STRING="libgc-mono 6.6";PACKAGE_BUGREPORT="Hans_Boehm%40hp.com";GC_WIN32_THREADS=1;NO_GETENV=1;GC_INSIDE_DLL=1;GC_NOT_DLL=1;STDC_HEADERS=1;HAVE_SYS_TYPES_H=1;HAVE_SYS_STAT_H=1;HAVE_STDLIB_H=1;HAVE_STRING_H=1;HAVE_MEMORY_H=1;HAVE_STRINGS_H=1;HAVE_INTTYPES_H=1;HAVE_STDINT_H=1;HAVE_UNISTD_H=1;SILENT=1;NO_SIGNALS=1;NO_EXECUTE_PERMISSION=1;JAVA_FINALIZATION=1;GC_GCJ_SUPPORT=1;ATOMIC_UNCOLLECTABLE=1;_IN_LIBGC=1;WINVER=0x0500;_WIN32_WINNT=0x0500;_WIN32_IE=0x0501;WIN32_THREADS;FD_SETSIZE=1024;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>RIMWORLD;NDEBUG;__x86_64__;TARGET_AMD64;WIN64;_WIN64;WIN32;_WIN32;__WIN32__;_WINDOWS;WINDOWS;PLATFORM_WIN32;TARGET_WIN32;_CRT_SECURE_NO_DEPRECATE;__STDC__;PACKAGE_NAME="libgc-mono";PACKAGE_TARNAME="libgc-mono";PACKAGE_VERSION="6.6";PACKAGE_STRING="libgc-mono 6.6";PACKAGE_BUGREPORT="Hans_Boehm%40hp.com";GC_WIN32_THREADS=1;NO_GETENV=1;GC_INSIDE_DLL=1;GC_NOT_DLL=1;STDC_HEADERS=1;HAVE_SYS_TYPES_H=1;HAVE_SYS_STAT_H=1;HAVE_STDLIB_H=1;HAVE_STRING_H=1;HAVE_MEMORY_H=1;HAVE_STRINGS_H=1;HAVE_INTTYPES_H=1;HAVE_STDINT_H=1;HAVE_UNISTD_H=1;SILENT=1;NO_SIGNALS=1;NO_EXECUTE_PERMISSION=1;JAVA_FINALIZATION=1;GC_GCJ_SUPPORT=1;ATOMIC_UNCOLLECTABLE=1;_IN_LIBGC=1;WINVER=0x0500;_WIN32_WINNT=0x0500;_WIN32_IE=0x0501;WIN32_THREADS;FD_SETSIZE=1024;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <ProgramDataBaseFileName>$(OutDir)vc80.pdb</ProgramDataBaseFileName>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)libgc.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseNoOp_eglib|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>MinSpace</Optimization>
+      <AdditionalIncludeDirectories>..\libgc\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>RIMWORLD;NDEBUG;__x86_64__;TARGET_AMD64;WIN64;_WIN64;WIN32;_WIN32;__WIN32__;_WINDOWS;WINDOWS;PLATFORM_WIN32;TARGET_WIN32;_CRT_SECURE_NO_DEPRECATE;__STDC__;PACKAGE_NAME="libgc-mono";PACKAGE_TARNAME="libgc-mono";PACKAGE_VERSION="6.6";PACKAGE_STRING="libgc-mono 6.6";PACKAGE_BUGREPORT="Hans_Boehm%40hp.com";GC_WIN32_THREADS=1;NO_GETENV=1;GC_INSIDE_DLL=1;GC_NOT_DLL=1;STDC_HEADERS=1;HAVE_SYS_TYPES_H=1;HAVE_SYS_STAT_H=1;HAVE_STDLIB_H=1;HAVE_STRING_H=1;HAVE_MEMORY_H=1;HAVE_STRINGS_H=1;HAVE_INTTYPES_H=1;HAVE_STDINT_H=1;HAVE_UNISTD_H=1;SILENT=1;NO_SIGNALS=1;NO_EXECUTE_PERMISSION=1;JAVA_FINALIZATION=1;GC_GCJ_SUPPORT=1;ATOMIC_UNCOLLECTABLE=1;_IN_LIBGC=1;WINVER=0x0500;_WIN32_WINNT=0x0500;_WIN32_IE=0x0501;WIN32_THREADS;FD_SETSIZE=1024;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <BufferSecurityCheck>true</BufferSecurityCheck>
       <PrecompiledHeader>
