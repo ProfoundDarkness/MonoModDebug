@@ -55,6 +55,7 @@ mono_unity_class_is_abstract
 mono_backtrace_from_context
 mono_unity_thread_clear_domain_fields
 mono_unity_get_all_classes_with_name_case
+unity_mono_reflection_method_get_method
 
 ;Exports that should have been here, but I dont understand why they're not.
 mono_security_enable_core_clr
@@ -241,6 +242,8 @@ mono_custom_attrs_has_attr
 mono_debug_add_method
 mono_debug_cleanup
 mono_debug_close_mono_symbol_file
+mono_debug_domain_create
+mono_debug_domain_unload
 mono_debug_find_method
 mono_debug_free_source_location
 mono_debug_init

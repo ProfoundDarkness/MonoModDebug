@@ -3472,7 +3472,8 @@ insert_breakpoint (MonoSeqPointInfo *seq_points, MonoDomain *domain, MonoJitInfo
 
 	if (i == seq_points->len) {
 		/* Have to handle this somehow */
-		g_error ("Unable to insert breakpoint at %s:%d, seq_points=%d\n", mono_method_full_name (ji->method, TRUE), bp->il_offset, seq_points->len);
+		g_warning ("Unable to insert breakpoint at %s:%d, seq_points=%d\n", mono_method_full_name (ji->method, TRUE), bp->il_offset, seq_points->len);
+		return;
 	}
 
 	inst = g_new0 (BreakpointInstance, 1);
@@ -5146,6 +5147,10 @@ do_invoke_method (DebuggerTlsData *tls, Buffer *buf, InvokeData *invoke)
 	sig = mono_method_signature (m);
 
 	if (m->is_generic && !m->is_inflated)
+		return ERR_NOT_IMPLEMENTED;
+	
+	/* Do not invoke method with a generic type parameter as return value. */
+	if(sig && sig->ret && sig->ret->type == MONO_TYPE_VAR)
 		return ERR_NOT_IMPLEMENTED;
 
 	if (m->klass->valuetype)
