@@ -5323,9 +5323,9 @@ mini_init (const char *filename, const char *runtime_version)
 
 	MONO_PROBE_VES_INIT_BEGIN ();
 
-#ifdef RIMWORLD
+#ifdef MONO_MOD_DEBUG
    {
-      char *options_debug = getenv("RIMWORLD_MOD_DEBUG");
+      char *options_debug = getenv("MONO_MOD_DEBUG");
       if (options_debug)
       {
          const char* options[] =

@@ -1452,7 +1452,7 @@ mono_assembly_open (const char *filename, MonoImageOpenStatus *status)
 	return mono_assembly_open_full (filename, status, FALSE);
 }
 
-#ifdef RIMWORLD
+#ifdef MONO_MOD_DEBUG
 static gchar *
 find_file_in_dir(const gchar *path, const gchar *fileName)
 {
@@ -1495,7 +1495,7 @@ mono_assembly_load_from_full (MonoImage *image, const char*fname,
 		*status = MONO_IMAGE_IMAGE_INVALID;
 		return NULL;
 	}
-#ifdef RIMWORLD
+#ifdef MONO_MOD_DEBUG
    if (*fname == '\0')
    {
       gchar *cwd = g_get_current_dir();
